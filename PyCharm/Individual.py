@@ -21,13 +21,15 @@ if __name__ == '__main__':
             # Запросить данные о работнике.
             name = input("Фамилия и инициалы? ")
             post = input("Телефон? ")
-            year = int(input("Год рождения? "))
+            year = input("Дата рождения? ")
+            year = year.split(".")
+            year = date(int(year[2]), int(year[1]), int(year[0]))
 
             # Создать словарь.
             man = {
                 'name': name,
                 'tel': post,
-                'date': year,
+                'date': str(year),
             }
 
             # Добавить словарь в список.
@@ -42,11 +44,11 @@ if __name__ == '__main__':
                 '-' * 4,
                 '-' * 30,
                 '-' * 20,
-                '-' * 12
+                '-' * 20
             )
             print(line)
             print(
-                '| {:^4} | {:^30} | {:^20} | {:^12} |'.format(
+                '| {:^4} | {:^30} | {:^20} | {:^20} |'.format(
                     "№",
                     "Ф.И.О.",
                     "Телефон",
@@ -58,11 +60,11 @@ if __name__ == '__main__':
             # Вывести данные о всех сотрудниках.
             for idx, man in enumerate(people, 1):
                 print(
-                    '| {:>4} | {:<30} | {:<20} | {:>12} |'.format(
+                    '| {:>4} | {:<30} | {:<20} | {:>20} |'.format(
                         idx,
                         man.get('name', ''),
                         man.get('tel', ''),
-                        man.get('date', 0)
+                        man.get('date', '')
                     )
                 )
             print(line)
