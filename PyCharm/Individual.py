@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from datetime import date
+from datetime import date, datetime
 
 if __name__ == '__main__':
     # Список работников.
@@ -21,15 +21,19 @@ if __name__ == '__main__':
             # Запросить данные о работнике.
             name = input("Фамилия и инициалы? ")
             post = input("Телефон? ")
-            year = input("Дата рождения? ")
+            #year = input("Дата рождения? ")
+
+            #year = date(int(year[2]), int(year[1]), int(year[0]))
+            year = input("Введите дату рождения (гггг.мм.дд): ")
             year = year.split(".")
-            year = date(int(year[2]), int(year[1]), int(year[0]))
+            year = date(int(year[0]), int(year[1]), int(year[2]))
+
 
             # Создать словарь.
             man = {
                 'name': name,
                 'tel': post,
-                'date': str(year),
+                'date': year,
             }
 
             # Добавить словарь в список.
@@ -64,7 +68,7 @@ if __name__ == '__main__':
                         idx,
                         man.get('name', ''),
                         man.get('tel', ''),
-                        man.get('date', '')
+                        str(man.get('date', ''))
                     )
                 )
             print(line)
