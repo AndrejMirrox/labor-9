@@ -105,7 +105,7 @@ if __name__ == '__main__':
                             count,
                             man.get('name', ''),
                             man.get('tel', ''),
-                            man.get('date', 0)
+                            str(man.get('date', 0))
                         )
                     )
                     print(line)
